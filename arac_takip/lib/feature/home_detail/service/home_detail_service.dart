@@ -9,12 +9,18 @@ abstract class IHomeDetailService {
   Future<List<CarTrackingInfo>?> fetchAllRecords({int count = 5});
 }
 
-class HomeService extends IHomeDetailService {
-  HomeService(DBManager dbManager) : super(dbManager);
+class HomeDetailService extends IHomeDetailService {
+  HomeDetailService(DBManager dbManager) : super(dbManager);
 
   @override
   Future<List<CarTrackingInfo>?> fetchAllRecords({int count = 5}) async {
     final response = await _dbManager.selectRecords();
+
+    return response;
+  }
+
+  Future<List<CarTrackingInfo>?> fetchRecord({required int id}) async {
+    final response = await _dbManager.selectRecord(id);
 
     return response;
   }

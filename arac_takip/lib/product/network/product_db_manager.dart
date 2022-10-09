@@ -4,6 +4,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:arac_takip/product/constant/application_constant.dart';
+
 import '../../feature/home/model/car_tracking_info_model.dart';
 
 class DBManager {
@@ -29,9 +31,15 @@ class DBManager {
     }
     ]
     ''';
+    ApplicationConstant.dbHelper.getCalendarLogs();
     final parsed = jsonDecode(json);
     //sleep(const Duration(seconds: 2));
     var myList = parsed.map<CarTrackingInfo>((json) => CarTrackingInfo.fromJson(json)).toList();
     return myList;
+  }
+
+  selectRecord(int id) {
+    var fetchedInfo = ApplicationConstant.dbHelper.fetch(id);
+    return fetchedInfo;
   }
 }

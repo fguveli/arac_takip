@@ -7,9 +7,11 @@ import 'package:arac_takip/product/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../home_detail/view/home_detail_view.dart';
 import '../service/home_service.dart';
 
 class HomeView extends StatefulWidget {
+  static const routeName = 'home-route';
   const HomeView({super.key});
 
   @override
@@ -42,6 +44,12 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         appBar: AppBar(
           leading: _loadingCenter(),
+          actions: [
+            IconButton(
+              onPressed: () => Navigator.of(context).pushNamed(HomeDetailView.routeName),
+              icon: const Icon(Icons.add),
+            )
+          ],
         ),
         body: _bodyListView(),
       ),
