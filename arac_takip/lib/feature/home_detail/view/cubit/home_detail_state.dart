@@ -1,41 +1,55 @@
 part of 'home_detail_cubit.dart';
 
-class HomeDetailStat extends Equatable {
-  const HomeDetailStat(
-      {this.records,
-      this.isUpdated = false,
-      this.isLoading,
-      this.selectrecords,
-      this.categories,
-      this.isInitial = false,
-      this.pageNumber});
+class HomeDetailState extends Equatable {
+  const HomeDetailState({
+    this.id,
+    this.model,
+    this.plate,
+    this.fromdate,
+    this.todate,
+    this.takenfrom,
+    this.givento,
+    this.note,
+  });
 
-  final List<CarTrackingInfo>? records;
-  final List<CarTrackingInfo>? selectrecords;
-  final bool? isLoading;
-  final List<String>? categories;
-
-  final bool isUpdated;
-
-  final bool isInitial;
-  final int? pageNumber;
+  final int? id;
+  final String? model;
+  final String? plate;
+  final DateTime? fromdate;
+  final DateTime? todate;
+  final String? takenfrom;
+  final String? givento;
+  final String? note;
 
   @override
-  List<Object?> get props => [records, isLoading, categories, pageNumber, isUpdated, selectrecords];
+  List<Object?> get props => [
+        plate,
+        fromdate,
+        todate,
+        takenfrom,
+        givento,
+        note,
+      ];
 
-  HomeDetailStat copyWith(
-      {List<CarTrackingInfo>? records,
-      List<CarTrackingInfo>? selectrecords,
-      bool? isLoading,
-      List<String>? categories,
-      bool? isUpdated,
-      int? pageNumber}) {
-    return HomeDetailStat(
-        records: records ?? this.records,
-        isUpdated: isUpdated ?? this.isUpdated,
-        selectrecords: selectrecords ?? this.selectrecords,
-        isLoading: isLoading ?? this.isLoading,
-        categories: categories ?? this.categories,
-        pageNumber: pageNumber ?? this.pageNumber);
+  HomeDetailState copyWith({
+    final int? id,
+    final String? model,
+    final String? plate,
+    final DateTime? fromdate,
+    final DateTime? todate,
+    final String? takenfrom,
+    final String? givento,
+    final String? note,
+  }) {
+    return HomeDetailState(
+      id: id ?? this.id,
+      model: model ?? this.model,
+      plate: plate ?? this.plate,
+      fromdate: fromdate ?? this.fromdate,
+      todate: todate ?? this.todate,
+      takenfrom: takenfrom ?? this.takenfrom,
+      givento: givento ?? this.givento,
+      note: note ?? this.note,
+    );
   }
 }
